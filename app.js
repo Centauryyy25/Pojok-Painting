@@ -10,6 +10,7 @@ function initializeApp() {
     setupGallery();
     setupSmoothScrolling();
     setupWhatsAppButtons();
+    setupFAQAccordion();
 }
 
 // Navigation Setup
@@ -284,6 +285,42 @@ function setupGallery() {
             }
         }
     });
+}
+
+// FAQ Accordion Setup
+function setupFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all items first
+            faqItems.forEach(faq => {
+                faq.classList.remove('active');
+                const otherAnswer = faq.querySelector('.faq-answer');
+                otherAnswer.style.maxHeight = '0';
+                const otherIcon = faq.querySelector('.faq-icon');
+                otherIcon.textContent = '+';
+            });
+            
+            // Toggle current item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.textContent = '×';
+            }
+        });
+    });
+    
+    // Open first FAQ by default
+    if (faqItems.length > 0) {
+        faqItems[0].click();
+    }
 }
 
 function createLightbox(imageSrc, title) {
