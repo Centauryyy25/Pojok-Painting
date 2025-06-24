@@ -151,7 +151,7 @@ function setupPriceCalculator() {
 Bisa diproses lebih lanjut?`;
         
         const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=6281234567890&text=${encodedMessage}`;
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=6285782842306&text=${encodedMessage}`;
         
         // Convert button to link and set href
         getQuoteBtn.setAttribute('href', whatsappUrl);
